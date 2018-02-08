@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "../token/ERC20/MintableToken.sol";
+import "../token/ERC20/Mintable.sol";
 import "../math/SafeMath.sol";
 
 
@@ -18,7 +18,7 @@ contract Crowdsale {
   using SafeMath for uint256;
 
   // The token being sold
-  MintableToken public token;
+  Mintable public token;
 
   // start and end timestamps where investments are allowed (both inclusive)
   uint256 public startTime;
@@ -43,7 +43,7 @@ contract Crowdsale {
   event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint256 value, uint256 amount);
 
 
-  function Crowdsale(uint256 _startTime, uint256 _endTime, uint256 _rate, address _wallet, MintableToken _token) public {
+  function Crowdsale(uint256 _startTime, uint256 _endTime, uint256 _rate, address _wallet, Mintable _token) public {
     require(_startTime >= now);
     require(_endTime >= _startTime);
     require(_rate > 0);
